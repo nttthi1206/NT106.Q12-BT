@@ -122,7 +122,7 @@
             // button1
             // 
             button1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(317, 332);
+            button1.Location = new Point(322, 330);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 9;
