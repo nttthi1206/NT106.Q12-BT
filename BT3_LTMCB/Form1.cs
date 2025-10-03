@@ -14,8 +14,13 @@ namespace BT3_LTMCB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DK a=new DK();
+            DK a = new DK();
             a.Show();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

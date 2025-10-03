@@ -36,6 +36,7 @@
             textBox2 = new TextBox();
             label4 = new Label();
             button2 = new Button();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // textBox1
@@ -114,11 +115,24 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel1.Location = new Point(331, 287);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(105, 17);
+            linkLabel1.TabIndex = 8;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Quên mật khẩu?";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(linkLabel1);
             Controls.Add(button2);
             Controls.Add(label4);
             Controls.Add(textBox2);
@@ -143,5 +157,6 @@
         private TextBox textBox2;
         private Label label4;
         private Button button2;
+        private LinkLabel linkLabel1;
     }
 }
