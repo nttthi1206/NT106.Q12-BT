@@ -22,5 +22,10 @@ namespace BT3_LTMCB
         {
 
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

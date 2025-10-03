@@ -89,10 +89,13 @@
             // 
             // textBox2
             // 
+            textBox2.Cursor = Cursors.SizeNESW;
             textBox2.Location = new Point(388, 176);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(125, 27);
             textBox2.TabIndex = 5;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label4
             // 
