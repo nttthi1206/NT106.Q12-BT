@@ -42,18 +42,20 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(372, 99);
+            textBox1.Location = new Point(604, 158);
+            textBox1.Margin = new Padding(5);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(201, 39);
             textBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(317, 50);
+            label1.Location = new Point(515, 80);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(127, 25);
+            label1.Size = new Size(202, 42);
             label1.TabIndex = 1;
             label1.Text = "ĐĂNG KÝ ";
             // 
@@ -61,9 +63,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(254, 109);
+            label2.Location = new Point(413, 174);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(80, 17);
+            label2.Size = new Size(123, 26);
             label2.TabIndex = 2;
             label2.Text = "Username:";
             label2.Click += label2_Click;
@@ -72,9 +75,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(279, 169);
+            label3.Location = new Point(453, 270);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(50, 17);
+            label3.Size = new Size(81, 26);
             label3.TabIndex = 3;
             label3.Text = "Email:";
             // 
@@ -82,9 +86,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(254, 216);
+            label4.Location = new Point(413, 346);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(75, 17);
+            label4.Size = new Size(118, 26);
             label4.TabIndex = 4;
             label4.Text = "Password:";
             // 
@@ -92,48 +97,55 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(197, 279);
+            label5.Location = new Point(320, 446);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(132, 17);
+            label5.Size = new Size(210, 26);
             label5.TabIndex = 5;
             label5.Text = "Confirm Password:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(372, 159);
+            textBox2.Location = new Point(604, 254);
+            textBox2.Margin = new Padding(5);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
+            textBox2.Size = new Size(201, 39);
             textBox2.TabIndex = 6;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(372, 206);
+            textBox3.Location = new Point(604, 330);
+            textBox3.Margin = new Padding(5);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
+            textBox3.Size = new Size(201, 39);
             textBox3.TabIndex = 7;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(372, 269);
+            textBox4.Location = new Point(604, 430);
+            textBox4.Margin = new Padding(5);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
+            textBox4.Size = new Size(201, 39);
             textBox4.TabIndex = 8;
             // 
             // button1
             // 
             button1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(322, 330);
+            button1.Location = new Point(523, 528);
+            button1.Margin = new Padding(5);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(153, 46);
             button1.TabIndex = 9;
             button1.Text = "ĐĂNG KÝ";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // DK
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1300, 720);
             Controls.Add(button1);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -144,6 +156,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            Margin = new Padding(5);
             Name = "DK";
             Text = "DK";
             ResumeLayout(false);

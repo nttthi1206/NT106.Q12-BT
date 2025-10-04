@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace BT3_LTMCB
 {
-    public partial class INFOMATION: Form
+    public partial class INFOMATION : Form
     {
         public INFOMATION()
         {
             InitializeComponent();
+        }
+
+        private void INFOMATION_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
