@@ -1,4 +1,5 @@
-﻿namespace BT3_LTMCB
+﻿
+namespace BT3_LTMCB
 {
     partial class Form1
     {
@@ -37,6 +38,7 @@
             label4 = new Label();
             button2 = new Button();
             linkLabel1 = new LinkLabel();
+            checkBoxShowPassword = new CheckBox();
             SuspendLayout();
             // 
             // textBox1
@@ -66,6 +68,7 @@
             button1.TabIndex = 2;
             button1.Text = "Đăng Nhập";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
@@ -130,11 +133,22 @@
             linkLabel1.Text = "Quên mật khẩu?";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // checkBoxShowPassword
+            // 
+            checkBoxShowPassword.AutoSize = true;
+            checkBoxShowPassword.Location = new Point(542, 179);
+            checkBoxShowPassword.Name = "checkBoxShowPassword";
+            checkBoxShowPassword.Size = new Size(127, 24);
+            checkBoxShowPassword.TabIndex = 9;
+            checkBoxShowPassword.Text = "Hiện mật khẩu";
+            checkBoxShowPassword.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(checkBoxShowPassword);
             Controls.Add(linkLabel1);
             Controls.Add(button2);
             Controls.Add(label4);
@@ -150,6 +164,15 @@
             PerformLayout();
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        { 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private TextBox textBox1;
@@ -161,5 +184,7 @@
         private Label label4;
         private Button button2;
         private LinkLabel linkLabel1;
+        private CheckBox checkBox1;
+        private CheckBox checkBoxShowPassword;
     }
 }
