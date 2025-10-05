@@ -61,6 +61,10 @@ private void button1_Click(object sender, EventArgs e)
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
+            Form1 DN = new Form1();
+            DN.Show();
+            this.Hide();
+
 
         }
 
