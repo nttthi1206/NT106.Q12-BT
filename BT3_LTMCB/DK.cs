@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+
 
 namespace BT3_LTMCB
 {
@@ -17,13 +23,66 @@ namespace BT3_LTMCB
         {
             InitializeComponent();
         }
+        private string connectionString = "Server=localhost,1433;Database=UserDB;User Id=sa;Password=YourStrong@Passw0rd;";
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+        // Đăng ký người dùng vào cơ sở dữ liệu
+        private void RegisterUser(string username, string password, string email)
+        {
+            string hashedPassword = HashPassword(password);
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Kiểm tra username đã tồn tại chưa
+                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@Username", username);
+                    int userExists = (int)checkCmd.ExecuteScalar();
+
+                    if (userExists > 0)
+                    {
+                        MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Thêm user mới
+                    string insertQuery = "INSERT INTO Users (Username, Password, Email) VALUES (@Username, @Password, @Email)";
+                    SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+                    insertCmd.Parameters.AddWithValue("@Username", username);
+                    insertCmd.Parameters.AddWithValue("@Password", hashedPassword);
+                    insertCmd.Parameters.AddWithValue("@Email", email);
+                    insertCmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
             string password = textBox3.Text.Trim();
@@ -56,7 +115,11 @@ private void button1_Click(object sender, EventArgs e)
                 return;
             }
             MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //hiện lên chổ đăng ký thành công rồi nè anh Danh 
+
+            // Thêm người dùng vào cơ sở dữ liệu
+            RegisterUser(username, password, email);
+
+            // Làm mới form đăng ký
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
