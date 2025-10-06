@@ -1,11 +1,11 @@
 ﻿# NT206 - Lập trình mạng căn bản
-# Bài tập tuần 3 - Viết ứng dụng quản lý người dùng với tính năng đăng nhập, đăng ký
+Bài tập tuần 3 - Viết ứng dụng quản lý người dùng với tính năng đăng nhập, đăng ký
 **Danh sách thành viên**:
-	- 24521726	Lương Thị Anh Thư
-	- 24521674	Lê Văn Thiết
-	- 24521655	Phùng Ngọc Thi
-	- 24521654	Nguyễn Thị Trang Thi
-	- 22520200	Trần Ngọc Danh
+	- 24521726	Lương Thị Anh Thư  
+	- 24521674	Lê Văn Thiết  
+	- 24521655	Phùng Ngọc Thi  
+	- 24521654	Nguyễn Thị Trang Thi  
+	- 22520200	Trần Ngọc Danh  
 
 ## 📝 Mô tả
 Ứng dụng C# Windows Forms gồm hai chức năng chính:
