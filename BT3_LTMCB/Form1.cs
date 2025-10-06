@@ -12,6 +12,7 @@ namespace BT3_LTMCB
             InitializeComponent();
             textBox2.PasswordChar = '*';
         }
+        private string connectionString = "Server=localhost,1433;Database=UserDB;User Id=sa;Password=YourStrong@Passw0rd;";
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -30,6 +31,30 @@ namespace BT3_LTMCB
         {
             textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
         }
+        private bool Login(string username, string password)
+        {
+            string hashedPassword = HashPassword(password);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", hashedPassword);
+
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,7 +67,7 @@ namespace BT3_LTMCB
                 return;
             }
 
-            if (username == "admin" && password == "123")
+            if (Login(username, password))
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
