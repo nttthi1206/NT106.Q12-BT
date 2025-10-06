@@ -41,82 +41,77 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(114, 83);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(287, 96);
             label1.Name = "label1";
-            label1.Size = new Size(588, 51);
+            label1.Size = new Size(371, 32);
             label1.TabIndex = 0;
             label1.Text = "THÔNG TIN NGƯỜI DÙNG ";
             // 
             // button1
             // 
-            button1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(798, 568);
-            button1.Margin = new Padding(5, 5, 5, 5);
+            button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(486, 396);
             button1.Name = "button1";
-            button1.Size = new Size(206, 70);
+            button1.Size = new Size(156, 67);
             button1.TabIndex = 2;
-            button1.Text = "Đăng Xuất";
+            button1.Text = "Đăng xuất";
             button1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(169, 190);
-            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(149, 194);
             label2.Name = "label2";
-            label2.Size = new Size(123, 26);
+            label2.Size = new Size(122, 25);
             label2.TabIndex = 3;
             label2.Text = "Username:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(188, 318);
-            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(149, 277);
             label3.Name = "label3";
-            label3.Size = new Size(81, 26);
+            label3.Size = new Size(76, 25);
             label3.TabIndex = 4;
             label3.Text = "Email:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(413, 318);
-            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(402, 272);
             label4.Name = "label4";
-            label4.Size = new Size(346, 32);
+            label4.Size = new Size(334, 31);
             label4.TabIndex = 5;
             label4.Text = "\"Email người dùng đã đăng ký\"";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(393, 186);
-            label5.Margin = new Padding(5, 0, 5, 0);
+            label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(402, 188);
             label5.Name = "label5";
-            label5.Size = new Size(327, 32);
+            label5.Size = new Size(313, 31);
             label5.TabIndex = 6;
             label5.Text = "\"Tên người dùng đã đăng ký\"";
             // 
             // button2
             // 
-            button2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(1038, 568);
-            button2.Margin = new Padding(5, 5, 5, 5);
+            button2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(678, 396);
             button2.Name = "button2";
-            button2.Size = new Size(187, 70);
+            button2.Size = new Size(151, 67);
             button2.TabIndex = 7;
             button2.Text = "Thoát";
             button2.UseVisualStyleBackColor = true;
             // 
             // INFOMATION
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 720);
+            ClientSize = new Size(943, 552);
             Controls.Add(button2);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -124,7 +119,6 @@
             Controls.Add(label2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Margin = new Padding(5, 5, 5, 5);
             Name = "INFOMATION";
             Text = "INFOMATION";
             Load += INFOMATION_Load;
