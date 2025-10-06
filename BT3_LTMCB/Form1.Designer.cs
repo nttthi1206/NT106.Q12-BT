@@ -142,6 +142,7 @@ namespace BT3_LTMCB
             checkBoxShowPassword.TabIndex = 9;
             checkBoxShowPassword.Text = "Hiện mật khẩu";
             checkBoxShowPassword.UseVisualStyleBackColor = true;
+            checkBoxShowPassword.CheckedChanged += CheckBoxShowPassword_CheckedChanged;
             // 
             // Form1
             // 
