@@ -93,7 +93,7 @@ namespace BT3_LTMCB
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(!Regex.IsMatch(username, @"^[a-zA-Z0-9]{5,15}$"))
+            if (!Regex.IsMatch(username, @"^[a-zA-Z0-9]{5,15}$"))
             {
                 MessageBox.Show("Tên đăng nhập phải từ 5-15 ký tự và không chứa ký tự đặc biệt.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -134,6 +134,12 @@ namespace BT3_LTMCB
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 login = new Form1();
+            login.Show();
         }
     }
 }
