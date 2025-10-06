@@ -1,6 +1,7 @@
 ﻿# NT206 - Lập trình mạng căn bản
 Bài tập tuần 3 - Viết ứng dụng quản lý người dùng với tính năng đăng nhập, đăng ký  
-**Danh sách thành viên**:  
+  
+## 👥 Nhóm thực hiện    
 	- 24521726	Lương Thị Anh Thư  
 	- 24521674	Lê Văn Thiết  
 	- 24521655	Phùng Ngọc Thi  
