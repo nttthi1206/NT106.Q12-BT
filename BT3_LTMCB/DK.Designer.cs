@@ -45,20 +45,21 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(610, 122);
+            textBox1.Location = new Point(452, 130);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 38);
+            textBox1.Size = new Size(301, 38);
             textBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(403, 61);
+            label1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(382, 31);
             label1.Name = "label1";
-            label1.Size = new Size(165, 35);
+            label1.Size = new Size(186, 38);
             label1.TabIndex = 1;
             label1.Text = "ĐĂNG KÝ ";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -104,34 +105,34 @@
             // textBox2
             // 
             textBox2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(610, 202);
+            textBox2.Location = new Point(452, 202);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 38);
+            textBox2.Size = new Size(301, 38);
             textBox2.TabIndex = 6;
             // 
             // textBox3
             // 
             textBox3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(610, 274);
+            textBox3.Location = new Point(452, 274);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 38);
+            textBox3.Size = new Size(301, 38);
             textBox3.TabIndex = 7;
             textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
             textBox4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(610, 359);
+            textBox4.Location = new Point(452, 359);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 38);
+            textBox4.Size = new Size(301, 38);
             textBox4.TabIndex = 8;
             // 
             // button1
             // 
             button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(417, 460);
+            button1.Location = new Point(390, 455);
             button1.Name = "button1";
-            button1.Size = new Size(132, 47);
+            button1.Size = new Size(167, 47);
             button1.TabIndex = 9;
             button1.Text = "ĐĂNG KÝ";
             button1.UseVisualStyleBackColor = true;
@@ -139,9 +140,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(832, 40);
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(832, 35);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(107, 38);
             button2.TabIndex = 10;
             button2.Text = "Đăng nhập";
             button2.UseVisualStyleBackColor = true;

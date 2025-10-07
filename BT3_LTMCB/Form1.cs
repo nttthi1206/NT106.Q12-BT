@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿﻿using System.Text;
 using Microsoft.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -31,7 +31,7 @@ namespace BT3_LTMCB
 
         private void CheckBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\\0' : '*';
+            textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
         }
         private bool Login(string username, string password)
         {

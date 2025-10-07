@@ -141,5 +141,10 @@ namespace BT3_LTMCB
             Form1 login = new Form1();
             login.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 namespace BT3_LTMCB
 {
     partial class Form1
