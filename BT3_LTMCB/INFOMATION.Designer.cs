@@ -46,6 +46,7 @@
             label1.Size = new Size(312, 25);
             label1.TabIndex = 0;
             label1.Text = "THÔNG TIN NGƯỜI DÙNG ";
+            label1.Click += label1_Click;
             // 
             // button1
             // 
