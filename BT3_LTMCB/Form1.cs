@@ -12,8 +12,10 @@ namespace BT3_LTMCB
             InitializeComponent();
             textBox2.PasswordChar = '*';
         }
-        string connectionString = "Data Source=localhost;Initial Catalog=UserDB;User ID=sa;Password=csdllab1;TrustServerCertificate=True";
-    private string HashPassword(string password)
+
+        private string connectionString = "Data Source=localhost;Initial Catalog=UserDB;User ID=sa;Password=csdllab1;TrustServerCertificate=True";
+
+        private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

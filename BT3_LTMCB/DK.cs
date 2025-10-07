@@ -23,7 +23,7 @@ namespace BT3_LTMCB
         {
             InitializeComponent();
         }
-        private string connectionString = "Server=localhost,1433;Database=UserDB;User Id=sa;Password=YourStrong@Passw0rd;";
+        private string connectionString = "Server=localhost;Database=UserDB;User Id=myuser;Password=YourStrong@Passw0rd;";
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
