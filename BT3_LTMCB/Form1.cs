@@ -12,10 +12,8 @@ namespace BT3_LTMCB
             InitializeComponent();
             textBox2.PasswordChar = '*';
         }
-        //string connectionString = "Data Source=LAPTOP-EK4KUJ5L;Initial Catalog=UserDB;User ID=sa;Password=123456;";
         string connectionString = "Data Source=localhost;Initial Catalog=UserDB;User ID=sa;Password=csdllab1;TrustServerCertificate=True";
-
-        private string HashPassword(string password)
+    private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
@@ -31,7 +29,7 @@ namespace BT3_LTMCB
 
         private void CheckBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
+            textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\\0' : '*';
         }
         private bool Login(string username, string password)
         {
@@ -42,15 +40,13 @@ namespace BT3_LTMCB
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
 
-                string hashedPassword = HashPassword(password); 
+                string hashedPassword = HashPassword(password);
                 cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
                 int count = (int)cmd.ExecuteScalar();
                 return count > 0;
             }
         }
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
@@ -85,7 +81,7 @@ namespace BT3_LTMCB
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Chua", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void label3_Click(object sender, EventArgs e)
         {
