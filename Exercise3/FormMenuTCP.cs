@@ -24,7 +24,7 @@ namespace Exercise3
         }
         private void buttonTCPClient_Click(object sender, EventArgs e)
         {
-            Form1 formTCPClient = new Form1();
+            FormDangNhap formTCPClient = new FormDangNhap();
             formTCPClient.Show();
         }
     }

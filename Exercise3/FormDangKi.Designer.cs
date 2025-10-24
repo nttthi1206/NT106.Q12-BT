@@ -1,6 +1,6 @@
 ﻿namespace BT3_LTMCB
 {
-    partial class DK
+    partial class FormDangKi
     {
         /// <summary>
         /// Required designer variable.

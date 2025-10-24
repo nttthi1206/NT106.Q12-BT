@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace BT3_LTMCB
 {
-    public partial class Form1 : Form
+    public partial class FormDangNhap : Form
     {
-        public Form1()
+        public FormDangNhap()
         {
             InitializeComponent();
             textBox2.PasswordChar = '*';
@@ -64,7 +64,7 @@ namespace BT3_LTMCB
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                INFOMATION mainForm = new INFOMATION();
+                FormThongTinNguoiDung mainForm = new FormThongTinNguoiDung();
                 mainForm.FormClosed += (s, args) => this.Close();
                 mainForm.Show();
             }
@@ -77,7 +77,7 @@ namespace BT3_LTMCB
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            DK dkForm = new DK();
+            FormDangKi dkForm = new FormDangKi();
             dkForm.Show();
         }
 
