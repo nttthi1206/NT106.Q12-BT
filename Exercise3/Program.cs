@@ -1,4 +1,6 @@
-namespace BT3_LTMCB
+using BT3_LTMCB;
+
+namespace Exercise3
 {
     internal static class Program
     {
@@ -11,7 +13,7 @@ namespace BT3_LTMCB
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FormMenuTCP());
         }
     }
 }
