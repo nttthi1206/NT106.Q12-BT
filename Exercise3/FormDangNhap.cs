@@ -2,15 +2,21 @@
 using Microsoft.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
 
 namespace BT3_LTMCB
 {
     public partial class FormDangNhap : Form
     {
+        // Add fields for the client socket
+        private Socket clientSocket;
+
         public FormDangNhap()
         {
             InitializeComponent();
             textBox2.PasswordChar = '*';
+            // Optionally, initialize UI controls for server IP/port/message here
         }
 
         private string connectionString = "Data Source=localhost;Initial Catalog=UserDB;User ID=sa;Password=csdllab1;TrustServerCertificate=True";
@@ -92,6 +98,46 @@ namespace BT3_LTMCB
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        // Example method to create and connect the client socket
+        private void ConnectToServer(string serverIp, int serverPort)
+        {
+            try
+            {
+                // 1. Tạo socket client
+                clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                // 2. Kết nối tới server
+                clientSocket.Connect(new IPEndPoint(IPAddress.Parse(serverIp), serverPort));
+                MessageBox.Show("Đã kết nối tới server!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
+        }
+
+        // Example method to send data
+        private void SendData(string message)
+        {
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                byte[] data = Encoding.UTF8.GetBytes(message);
+                clientSocket.Send(data); // Gửi dữ liệu tới server
+            }
+        }
+
+        // Example method to receive data
+        private string ReceiveData()
+        {
+            if (clientSocket != null && clientSocket.Connected)
+            {
+                byte[] buffer = new byte[1024];
+                int received = clientSocket.Receive(buffer); // Nhận dữ liệu từ server
+                return Encoding.UTF8.GetString(buffer, 0, received);
+            }
+            return string.Empty;
         }
     }
 }

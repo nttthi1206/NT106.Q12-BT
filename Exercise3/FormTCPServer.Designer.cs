@@ -33,18 +33,21 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(36, 62);
+            richTextBox1.Location = new Point(41, 83);
+            richTextBox1.Margin = new Padding(3, 4, 3, 4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(369, 258);
+            richTextBox1.Size = new Size(421, 343);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // FormTCPServer
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(436, 332);
+            ClientSize = new Size(498, 443);
             Controls.Add(richTextBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormTCPServer";
             Text = "TCP Server";
             ResumeLayout(false);

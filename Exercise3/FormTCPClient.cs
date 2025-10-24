@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Exercise3
 {
-    public partial class FormTCPServer : Form
+    public partial class FormTCPClient: Form
     {
-        public FormTCPServer()
+        public FormTCPClient()
         {
             InitializeComponent();
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
