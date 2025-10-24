@@ -1,7 +1,7 @@
 ﻿﻿
 namespace BT3_LTMCB
 {
-    partial class Form1
+    partial class FormDangNhap
     {
         /// <summary>
         ///  Required designer variable.

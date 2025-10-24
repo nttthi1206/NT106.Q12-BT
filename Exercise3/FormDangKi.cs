@@ -17,9 +17,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BT3_LTMCB
 {
-    public partial class DK : Form
+    public partial class FormDangKi : Form
     {
-        public DK()
+        public FormDangKi()
         {
             InitializeComponent();
         }
@@ -124,7 +124,7 @@ namespace BT3_LTMCB
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-            Form1 DN = new Form1();
+            FormDangNhap DN = new FormDangNhap();
             DN.Show();
             this.Hide();
 
@@ -138,7 +138,7 @@ namespace BT3_LTMCB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 login = new Form1();
+            FormDangNhap login = new FormDangNhap();
             login.Show();
         }
 

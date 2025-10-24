@@ -1,6 +1,6 @@
 ﻿namespace BT3_LTMCB
 {
-    partial class INFOMATION
+    partial class FormThongTinNguoiDung
     {
         /// <summary>
         /// Required designer variable.
