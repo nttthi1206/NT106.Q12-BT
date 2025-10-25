@@ -59,7 +59,6 @@
             label1.Size = new Size(186, 38);
             label1.TabIndex = 1;
             label1.Text = "ĐĂNG KÝ ";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -70,7 +69,6 @@
             label2.Size = new Size(122, 25);
             label2.TabIndex = 2;
             label2.Text = "Username:";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -117,7 +115,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(301, 38);
             textBox3.TabIndex = 7;
-            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 

@@ -41,9 +41,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(248, 92);
+            label1.Location = new Point(217, 69);
             label1.Name = "label1";
-            label1.Size = new Size(312, 25);
+            label1.Size = new Size(257, 22);
             label1.TabIndex = 0;
             label1.Text = "THÔNG TIN NGƯỜI DÙNG ";
             label1.Click += label1_Click;
@@ -51,9 +51,10 @@
             // button1
             // 
             button1.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(212, 355);
+            button1.Location = new Point(186, 266);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(127, 44);
+            button1.Size = new Size(111, 33);
             button1.TabIndex = 2;
             button1.Text = "Đăng xuất";
             button1.UseVisualStyleBackColor = true;
@@ -62,9 +63,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(193, 177);
+            label2.Location = new Point(169, 133);
             label2.Name = "label2";
-            label2.Size = new Size(102, 23);
+            label2.Size = new Size(82, 19);
             label2.TabIndex = 3;
             label2.Text = "Username:";
             // 
@@ -72,9 +73,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(230, 253);
+            label3.Location = new Point(201, 190);
             label3.Name = "label3";
-            label3.Size = new Size(65, 23);
+            label3.Size = new Size(52, 19);
             label3.TabIndex = 4;
             label3.Text = "Email:";
             // 
@@ -82,9 +83,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(414, 253);
+            label4.Location = new Point(362, 190);
             label4.Name = "label4";
-            label4.Size = new Size(285, 28);
+            label4.Size = new Size(225, 21);
             label4.TabIndex = 5;
             label4.Text = "\"Email người dùng đã đăng ký\"";
             // 
@@ -92,27 +93,29 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(414, 172);
+            label5.Location = new Point(362, 129);
             label5.Name = "label5";
-            label5.Size = new Size(267, 28);
+            label5.Size = new Size(210, 21);
             label5.TabIndex = 6;
             label5.Text = "\"Tên người dùng đã đăng ký\"";
             // 
             // button2
             // 
             button2.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(445, 355);
+            button2.Location = new Point(389, 266);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(115, 44);
+            button2.Size = new Size(101, 33);
             button2.TabIndex = 7;
             button2.Text = "Thoát";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // INFOMATION
+            // FormThongTinNguoiDung
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(823, 440);
+            ClientSize = new Size(720, 330);
             Controls.Add(button2);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -120,7 +123,8 @@
             Controls.Add(label2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Name = "INFOMATION";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "FormThongTinNguoiDung";
             Text = "INFOMATION";
             Load += INFOMATION_Load;
             ResumeLayout(false);

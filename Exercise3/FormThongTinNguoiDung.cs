@@ -26,5 +26,23 @@ namespace BT3_LTMCB
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // Xóa token nếu tồn tại
+                string tokenPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\token.jwt");
+                if (File.Exists(tokenPath))
+                {
+                    File.Delete(tokenPath);
+                }
+
+                this.Hide();
+                FormDangNhap loginForm = new FormDangNhap();
+                loginForm.FormClosed += (s, args) => this.Close();
+                loginForm.Show();
+            }
+        }
     }
 }
