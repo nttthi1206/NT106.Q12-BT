@@ -48,7 +48,6 @@ namespace BT3_LTMCB
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 38);
             textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 

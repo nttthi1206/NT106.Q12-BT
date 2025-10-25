@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,63 +24,37 @@ namespace BT3_LTMCB
         {
             InitializeComponent();
         }
-        private string connectionString = "Server=localhost;Database=UserDB;User Id=myuser;Password=YourStrong@Passw0rd;";
-        private string HashPassword(string password)
+        private string SendRegisterRequest(string username, string password, string email)
         {
-            using (SHA256 sha256 = SHA256.Create())
+            var registerData = new
             {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
+                type = "register",
+                data = new
                 {
-                    builder.Append(b.ToString("x2"));
+                    username = username,
+                    password = password,
+                    email = email
                 }
-                return builder.ToString();
-            }
-        }
-        // Đăng ký người dùng vào cơ sở dữ liệu
-        private void RegisterUser(string username, string password, string email)
-        {
-            string hashedPassword = HashPassword(password);
+            };
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string json = System.Text.Json.JsonSerializer.Serialize(registerData);
+            byte[] sendBytes = Encoding.UTF8.GetBytes(json);
+
+            using (TcpClient client = new TcpClient())
             {
-                try
-                {
-                    conn.Open();
+                client.ReceiveTimeout = 3000;
+                client.SendTimeout = 3000;
 
-                    // Kiểm tra username đã tồn tại chưa
-                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
-                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
-                    checkCmd.Parameters.AddWithValue("@Username", username);
-                    int userExists = (int)checkCmd.ExecuteScalar();
+                client.Connect("127.0.0.1", 1010);
+                using NetworkStream stream = client.GetStream();
 
-                    if (userExists > 0)
-                    {
-                        MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                stream.Write(sendBytes, 0, sendBytes.Length);
+                stream.Flush();
 
-                    // Thêm user mới
-                    string insertQuery = "INSERT INTO Users (Username, Password, Email) VALUES (@Username, @Password, @Email)";
-                    SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-                    insertCmd.Parameters.AddWithValue("@Username", username);
-                    insertCmd.Parameters.AddWithValue("@Password", hashedPassword);
-                    insertCmd.Parameters.AddWithValue("@Email", email);
-                    insertCmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                byte[] buffer = new byte[1024];
+                int bytesRead = stream.Read(buffer, 0, buffer.Length);
+                return Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
             }
-
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,6 +63,7 @@ namespace BT3_LTMCB
             string password = textBox3.Text.Trim();
             string confirmPassword = textBox4.Text.Trim();
             string email = textBox2.Text.Trim();
+
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,7 +76,7 @@ namespace BT3_LTMCB
             }
             if (!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
             {
-                MessageBox.Show("⚠ Email không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -114,37 +90,52 @@ namespace BT3_LTMCB
                 MessageBox.Show("Mật khẩu xác nhận không khớp.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Thêm người dùng vào cơ sở dữ liệu
-            RegisterUser(username, password, email);
+            Task.Run(() =>
+            {
+                try
+                {
+                    string response = SendRegisterRequest(username, password, email);
 
-            // Làm mới form đăng ký
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            FormDangNhap DN = new FormDangNhap();
-            DN.Show();
-            this.Hide();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        if (response == "registered")
+                        {
+                            MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            textBox1.Clear();
+                            textBox2.Clear();
+                            textBox3.Clear();
+                            textBox4.Clear();
 
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
+                            FormDangNhap DN = new FormDangNhap();
+                            DN.Show();
+                            this.Hide();
+                        }
+                        else if (response == "exists")
+                        {
+                            MessageBox.Show("Tên đăng nhập hoặc email đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đăng ký thất bại: " + response, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show("Lỗi khi gửi request đăng ký: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    });
+                }
+            });
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FormDangNhap login = new FormDangNhap();
             login.Show();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
         }
     }
 }
