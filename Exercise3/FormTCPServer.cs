@@ -91,17 +91,29 @@ namespace Exercise3
                     bool isValid = ValidateLogin(loginData.username, loginData.password);
                     if (isValid)
                     {
-                        string token = CreateJwtToken(loginData.username); // tạo token
+                        string email = GetEmailByUsername(loginData.username);  // Lấy email từ DB
+                        string token = CreateJwtToken(loginData.username);      // Tạo token JWT
+
+                        // Đóng gói JSON trả về
                         var jsonResponse = new
                         {
                             status = "success",
-                            token = token
+                            token = token,
+                            user = new
+                            {
+                                username = loginData.username,
+                                email = email
+                            }
                         };
                         response = JsonSerializer.Serialize(jsonResponse);
                     }
                     else
                     {
-                        response = "fail";
+                        var jsonResponse = new
+                        {
+                            status = "fail"
+                        };
+                        response = JsonSerializer.Serialize(jsonResponse);
                     }
                 }
                 else if (type == "register")
@@ -115,11 +127,25 @@ namespace Exercise3
                     string token = doc.RootElement.GetProperty("token").GetString();
                     if (IsJwtTokenValid(token, out string username))
                     {
-                        response = "autologin_success";
+                        string email = GetEmailByUsername(username);
+                        var jsonResponse = new
+                        {
+                            status = "autologin_success",
+                            user = new
+                            {
+                                username = username,
+                                email = email
+                            }
+                        };
+                        response = JsonSerializer.Serialize(jsonResponse);
                     }
                     else
                     {
-                        response = "autologin_fail";
+                        var jsonResponse = new
+                        {
+                            status = "autologin_fail"
+                        };
+                        response = JsonSerializer.Serialize(jsonResponse);
                     }
                 }
 
@@ -203,6 +229,27 @@ namespace Exercise3
             insertCmd.Parameters.AddWithValue("@Email", email);
             int rows = insertCmd.ExecuteNonQuery();
             return rows > 0;
+        }
+
+        private string GetEmailByUsername(string username)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                string query = "SELECT Email FROM Users WHERE Username = @Username";
+                using SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+
+                object result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : "";
+            }
+            catch (Exception ex)
+            {
+                AppendLog("Lỗi lấy email: " + ex.Message);
+                return "";
+            }
         }
 
         private string CreateJwtToken(string username)

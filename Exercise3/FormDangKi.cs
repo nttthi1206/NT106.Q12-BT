@@ -57,7 +57,7 @@ namespace BT3_LTMCB
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSignup_Click(object sender, EventArgs e)
         {
             string username = usernameTxtbox.Text.Trim();
             string password = passwordTxtbox.Text.Trim();
@@ -131,21 +131,12 @@ namespace BT3_LTMCB
             });
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             FormDangNhap login = new FormDangNhap();
             login.Show();
             this.Hide();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
