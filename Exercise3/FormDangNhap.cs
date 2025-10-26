@@ -12,7 +12,7 @@ namespace BT3_LTMCB
         public FormDangNhap()
         {
             InitializeComponent();
-            textBox2.PasswordChar = '*';
+            passwordTxtbox.PasswordChar = '*';
             this.Load += FormDangNhap_Load;
         }
         private void FormDangNhap_Load(object sender, EventArgs e)
@@ -59,13 +59,13 @@ namespace BT3_LTMCB
 
         private void CheckBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            textBox2.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
+            passwordTxtbox.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text.Trim();
-            string password = textBox2.Text.Trim();
+            string username = usernameTxtbox.Text.Trim();
+            string password = passwordTxtbox.Text.Trim();
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -93,7 +93,7 @@ namespace BT3_LTMCB
                         else if (response == "fail")
                         {
                             MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            textBox1.Focus();
+                            usernameTxtbox.Focus();
                         }
                         else
                         {
@@ -205,6 +205,11 @@ namespace BT3_LTMCB
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void FormDangNhap_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
