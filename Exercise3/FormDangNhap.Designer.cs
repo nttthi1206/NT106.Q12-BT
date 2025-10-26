@@ -29,107 +29,112 @@ namespace BT3_LTMCB
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangNhap));
+            usernameTxtbox = new TextBox();
             label1 = new Label();
-            button1 = new Button();
+            btnLogin = new Button();
             label2 = new Label();
             label3 = new Label();
-            textBox2 = new TextBox();
+            passwordTxtbox = new TextBox();
             label4 = new Label();
-            button2 = new Button();
+            btnSignup = new Button();
             linkLabel1 = new LinkLabel();
             checkBoxShowPassword = new CheckBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // usernameTxtbox
             // 
-            textBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(551, 168);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 38);
-            textBox1.TabIndex = 0;
+            usernameTxtbox.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            usernameTxtbox.Location = new Point(460, 174);
+            usernameTxtbox.Name = "usernameTxtbox";
+            usernameTxtbox.Size = new Size(245, 38);
+            usernameTxtbox.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(388, 68);
+            label1.Font = new Font("Segoe UI Variable Display", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(557, 71);
             label1.Name = "label1";
-            label1.Size = new Size(196, 35);
+            label1.Size = new Size(220, 40);
             label1.TabIndex = 1;
-            label1.Text = "ĐĂNG NHẬP";
+            label1.Text = "Member Login";
             label1.Click += label1_Click;
             // 
-            // button1
+            // btnLogin
             // 
-            button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(417, 377);
-            button1.Name = "button1";
-            button1.Size = new Size(145, 38);
-            button1.TabIndex = 2;
-            button1.Text = "Đăng nhập";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnLogin.BackColor = Color.Green;
+            btnLogin.Font = new Font("Segoe UI Variable Display", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.ForeColor = Color.WhiteSmoke;
+            btnLogin.Location = new Point(460, 351);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(245, 47);
+            btnLogin.TabIndex = 2;
+            btnLogin.Text = "Đăng nhập";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += button1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(297, 176);
+            label2.Font = new Font("Segoe UI Variable Display", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(460, 138);
             label2.Name = "label2";
-            label2.Size = new Size(114, 25);
+            label2.Size = new Size(122, 31);
             label2.TabIndex = 3;
             label2.Text = "Username";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(297, 268);
+            label3.Font = new Font("Segoe UI Variable Display", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(460, 235);
             label3.Name = "label3";
-            label3.Size = new Size(109, 25);
+            label3.Size = new Size(117, 31);
             label3.TabIndex = 4;
             label3.Text = "Password";
             // 
-            // textBox2
+            // passwordTxtbox
             // 
-            textBox2.Cursor = Cursors.SizeNESW;
-            textBox2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(551, 260);
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
-            textBox2.Size = new Size(125, 38);
-            textBox2.TabIndex = 5;
-            textBox2.TextChanged += textBox2_TextChanged;
+            passwordTxtbox.Cursor = Cursors.SizeNESW;
+            passwordTxtbox.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            passwordTxtbox.Location = new Point(460, 277);
+            passwordTxtbox.Name = "passwordTxtbox";
+            passwordTxtbox.PasswordChar = '*';
+            passwordTxtbox.Size = new Size(245, 38);
+            passwordTxtbox.TabIndex = 5;
+            passwordTxtbox.TextChanged += textBox2_TextChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(297, 478);
+            label4.Font = new Font("Segoe UI Variable Display", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(499, 463);
             label4.Name = "label4";
-            label4.Size = new Size(206, 23);
+            label4.Size = new Size(205, 24);
             label4.TabIndex = 6;
             label4.Text = "Bạn chưa có tài khoản?";
             // 
-            // button2
+            // btnSignup
             // 
-            button2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(573, 470);
-            button2.Name = "button2";
-            button2.Size = new Size(103, 38);
-            button2.TabIndex = 7;
-            button2.Text = "Đăng ký";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnSignup.Font = new Font("Segoe UI Variable Display", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSignup.Location = new Point(710, 456);
+            btnSignup.Name = "btnSignup";
+            btnSignup.Size = new Size(103, 38);
+            btnSignup.TabIndex = 7;
+            btnSignup.Text = "Đăng ký";
+            btnSignup.UseVisualStyleBackColor = true;
+            btnSignup.Click += button2_Click;
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Times New Roman", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            linkLabel1.Location = new Point(297, 319);
+            linkLabel1.Font = new Font("Segoe UI Variable Display", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel1.Location = new Point(499, 401);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(142, 22);
+            linkLabel1.Size = new Size(154, 27);
             linkLabel1.TabIndex = 8;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Quên mật khẩu?";
@@ -138,32 +143,46 @@ namespace BT3_LTMCB
             // checkBoxShowPassword
             // 
             checkBoxShowPassword.AutoSize = true;
-            checkBoxShowPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBoxShowPassword.Location = new Point(724, 263);
+            checkBoxShowPassword.Font = new Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkBoxShowPassword.Location = new Point(732, 281);
             checkBoxShowPassword.Name = "checkBoxShowPassword";
-            checkBoxShowPassword.Size = new Size(160, 32);
+            checkBoxShowPassword.Size = new Size(165, 31);
             checkBoxShowPassword.TabIndex = 9;
             checkBoxShowPassword.Text = "Hiện mật khẩu";
             checkBoxShowPassword.UseVisualStyleBackColor = true;
             checkBoxShowPassword.CheckedChanged += CheckBoxShowPassword_CheckedChanged;
             // 
-            // Form1
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(108, 161);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(245, 237);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // FormDangNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(976, 564);
+            Controls.Add(pictureBox1);
             Controls.Add(checkBoxShowPassword);
             Controls.Add(linkLabel1);
-            Controls.Add(button2);
+            Controls.Add(btnSignup);
             Controls.Add(label4);
-            Controls.Add(textBox2);
+            Controls.Add(passwordTxtbox);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(button1);
+            Controls.Add(btnLogin);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Name = "Form1";
+            Controls.Add(usernameTxtbox);
+            Name = "FormDangNhap";
             Text = "Form1";
+            Load += FormDangNhap_Load_1;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -179,16 +198,17 @@ namespace BT3_LTMCB
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox usernameTxtbox;
         private Label label1;
-        private Button button1;
+        private Button btnLogin;
         private Label label2;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox passwordTxtbox;
         private Label label4;
-        private Button button2;
+        private Button btnSignup;
         private LinkLabel linkLabel1;
         private CheckBox checkBox1;
         private CheckBox checkBoxShowPassword;
+        private PictureBox pictureBox1;
     }
 }

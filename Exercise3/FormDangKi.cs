@@ -59,10 +59,10 @@ namespace BT3_LTMCB
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text.Trim();
-            string password = textBox3.Text.Trim();
-            string confirmPassword = textBox4.Text.Trim();
-            string email = textBox2.Text.Trim();
+            string username = usernameTxtbox.Text.Trim();
+            string password = passwordTxtbox.Text.Trim();
+            string confirmPassword = confirmTxtbox.Text.Trim();
+            string email = emailTextbox.Text.Trim();
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(email))
             {
@@ -102,10 +102,10 @@ namespace BT3_LTMCB
                         if (response == "registered")
                         {
                             MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            textBox1.Clear();
-                            textBox2.Clear();
-                            textBox3.Clear();
-                            textBox4.Clear();
+                            usernameTxtbox.Clear();
+                            emailTextbox.Clear();
+                            passwordTxtbox.Clear();
+                            confirmTxtbox.Clear();
 
                             FormDangNhap DN = new FormDangNhap();
                             DN.Show();
@@ -136,6 +136,16 @@ namespace BT3_LTMCB
             FormDangNhap login = new FormDangNhap();
             login.Show();
             this.Hide();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
