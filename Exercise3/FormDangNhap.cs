@@ -13,8 +13,15 @@ namespace BT3_LTMCB
         {
             InitializeComponent();
             passwordTxtbox.PasswordChar = '*';
-            this.Load += FormDangNhap_Load;
         }
+        public class LoginResult
+        {
+            public bool Success { get; set; }
+            public string Token { get; set; }
+            public string Username { get; set; }
+            public string Email { get; set; }
+        }
+
         private void FormDangNhap_Load(object sender, EventArgs e)
         {
             string tokenPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\token.jwt");
@@ -27,15 +34,15 @@ namespace BT3_LTMCB
                 {
                     try
                     {
-                        string response = SendAutoLoginRequest(token);
+                        var result = SendAutoLoginRequest(token);
 
                         this.Invoke((MethodInvoker)(() =>
                         {
-                            if (response == "autologin_success")
+                            if (result.Success)
                             {
                                 MessageBox.Show("Tự động đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.Hide();
-                                FormThongTinNguoiDung mainForm = new FormThongTinNguoiDung();
+                                FormThongTinNguoiDung mainForm = new FormThongTinNguoiDung(result.Username, result.Email);
                                 mainForm.FormClosed += (s, args) => this.Close();
                                 mainForm.Show();
                             }
@@ -62,7 +69,7 @@ namespace BT3_LTMCB
             passwordTxtbox.PasswordChar = checkBoxShowPassword.Checked ? '\0' : '*';
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             string username = usernameTxtbox.Text.Trim();
             string password = passwordTxtbox.Text.Trim();
@@ -78,26 +85,22 @@ namespace BT3_LTMCB
             {
                 try
                 {
-                    string response = SendLoginRequest(username, password);
+                    var result = SendLoginRequest(username, password);
 
                     this.Invoke((MethodInvoker)delegate
                     {
-                        if (response == "success")
+                        if (result.Success)
                         {
                             MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Hide();
-                            FormThongTinNguoiDung mainForm = new FormThongTinNguoiDung();
+                            FormThongTinNguoiDung mainForm = new FormThongTinNguoiDung(result.Username, result.Email);
                             mainForm.FormClosed += (s, args) => this.Close();
                             mainForm.Show();
                         }
-                        else if (response == "fail")
+                        else if (!result.Success)
                         {
                             MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             usernameTxtbox.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Lỗi phản hồi từ server: " + response, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     });
                 }
@@ -118,14 +121,14 @@ namespace BT3_LTMCB
             });
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonSignup_Click(object sender, EventArgs e)
         {
             FormDangKi dkForm = new FormDangKi();
             dkForm.Show();
             this.Hide();
         }
 
-        private string SendLoginRequest(string username, string password)
+        private LoginResult SendLoginRequest(string username, string password)
         {
             var loginData = new
             {
@@ -144,10 +147,9 @@ namespace BT3_LTMCB
             {
                 client.ReceiveTimeout = 3000;   // Timeout 3 giây
                 client.SendTimeout = 3000;
-
                 client.Connect("127.0.0.1", 1010);
+                
                 using NetworkStream stream = client.GetStream();
-
                 stream.Write(sendBytes, 0, sendBytes.Length);
                 stream.Flush();
 
@@ -164,18 +166,28 @@ namespace BT3_LTMCB
                 if (status == "success")
                 {
                     string token = root.GetProperty("token").GetString();
-                    string projectRootPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\");
-                    string tokenFilePath = Path.Combine(projectRootPath, "token.jwt");
-                    File.WriteAllText(tokenFilePath, token);
-                    return "success";
+                    string usernameResp = root.GetProperty("user").GetProperty("username").GetString();
+                    string email = root.GetProperty("user").GetProperty("email").GetString();
+
+                    // Lưu token ra file
+                    string tokenPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\token.jwt");
+                    File.WriteAllText(tokenPath, token);
+
+                    return new LoginResult
+                    {
+                        Success = true,
+                        Token = token,
+                        Username = usernameResp,
+                        Email = email
+                    };
                 }
                 else
                 {
-                    return "fail";
+                    return new LoginResult { Success = false };
                 }
             }
         }
-        private string SendAutoLoginRequest(string token)
+        private LoginResult SendAutoLoginRequest(string token)
         {
             var request = new
             {
@@ -198,18 +210,34 @@ namespace BT3_LTMCB
 
                 byte[] buffer = new byte[1024];
                 int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                return Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
+                string responseJson = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
+
+                using var doc = System.Text.Json.JsonDocument.Parse(responseJson);
+                var root = doc.RootElement;
+                string status = root.GetProperty("status").GetString();
+
+                if (status == "autologin_success")
+                {
+                    string username = root.GetProperty("user").GetProperty("username").GetString();
+                    string email = root.GetProperty("user").GetProperty("email").GetString();
+
+                    return new LoginResult
+                    {
+                        Success = true,
+                        Username = username,
+                        Email = email
+                    };
+                }
+                else
+                {
+                    return new LoginResult { Success = false };
+                }
             }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void FormDangNhap_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

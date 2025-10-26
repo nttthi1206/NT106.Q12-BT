@@ -62,6 +62,7 @@
             textBoxPortNumber.Name = "textBoxPortNumber";
             textBoxPortNumber.Size = new Size(127, 27);
             textBoxPortNumber.TabIndex = 17;
+            textBoxPortNumber.Text = "1010";
             // 
             // labelMessage
             // 

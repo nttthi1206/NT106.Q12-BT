@@ -92,7 +92,7 @@
             btnSignup.TabIndex = 9;
             btnSignup.Text = "Sign up";
             btnSignup.UseVisualStyleBackColor = true;
-            btnSignup.Click += button1_Click;
+            btnSignup.Click += buttonSignup_Click;
             // 
             // btnLogin
             // 
@@ -103,7 +103,7 @@
             btnLogin.TabIndex = 10;
             btnLogin.Text = "Log in";
             btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += button2_Click;
+            btnLogin.Click += buttonLogin_Click;
             // 
             // label6
             // 
@@ -138,7 +138,6 @@
             label8.Size = new Size(122, 31);
             label8.TabIndex = 2;
             label8.Text = "Username";
-            label8.Click += label8_Click;
             // 
             // label9
             // 
@@ -206,7 +205,6 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 14;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox4
             // 

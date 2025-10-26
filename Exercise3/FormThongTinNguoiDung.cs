@@ -12,22 +12,21 @@ namespace BT3_LTMCB
 {
     public partial class FormThongTinNguoiDung : Form
     {
-        public FormThongTinNguoiDung()
+        private readonly string username;
+        private readonly string email;
+        public FormThongTinNguoiDung(string username, string email)
         {
             InitializeComponent();
+            this.username = username;
+            this.email = email;
         }
-
-        private void INFOMATION_Load(object sender, EventArgs e)
+        private void FormThongTinNguoiDung_Load(object sender, EventArgs e)
         {
-
+            labelUsernameInfo.Text = "Username: " + username;
+            labelEmailInfo.Text = "Email: " + email;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -42,6 +41,14 @@ namespace BT3_LTMCB
                 FormDangNhap loginForm = new FormDangNhap();
                 loginForm.FormClosed += (s, args) => this.Close();
                 loginForm.Show();
+            }
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát ứng dụng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
             }
         }
     }
