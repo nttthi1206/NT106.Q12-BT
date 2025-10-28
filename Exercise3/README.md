@@ -9,9 +9,28 @@
 **Bài tập tuần 5 - Viết ứng dụng quản lý người dùng với tính năng đăng nhập, đăng ký với TCP socket**  
   
 ## 📝 Mô tả
-Ứng dụng C# Windows Forms gồm hai chức năng chính:
-- **Đăng ký người dùng**: thêm thông tin vào cơ sở dữ liệu SQL Server
-- **Đăng nhập**: kiểm tra thông tin đăng nhập thông qua dữ liệu đã lưu trong bảng `Users`
+
+Ứng dụng gồm hai thành phần chính: **Client** và **Server**, giao tiếp với nhau thông qua giao thức **TCP socket**. Cả hai đều được xây dựng bằng C# **Windows Forms**, sử dụng thư viện `TcpClient` và `TcpListener`.
+
+🔑 Tính năng chính:
+- **Đăng ký người dùng**: tạo tài khoản với username, password, email và lưu vào SQL Server.
+- **Đăng nhập**: kiểm tra thông tin người dùng và tạo token JWT.
+- **Tự động đăng nhập**: nếu thiết bị đã lưu token, tự đăng nhập lại mà không cần nhập lại tài khoản.
+- **Đăng xuất**: xóa file token khỏi máy, đảm bảo bảo mật.
+- **Bảo mật**: sử dụng mã hóa bằng **JWT Token**, lưu token tạm trên máy người dùng.
+
+---
+
+💻 Công nghệ sử dụng
+
+| Thành phần | Công nghệ | Mô tả |
+|-----------|-----------|-------|
+| Client    | C# Windows Forms (`TcpClient`) | Giao diện người dùng, gửi yêu cầu đăng nhập/đăng ký tới server |
+| Server    | C# Windows Forms (`TcpListener`) | Lắng nghe kết nối TCP, xử lý yêu cầu từ client |
+| Token     | JWT (JSON Web Token) + HMAC | Mã hóa thông tin đăng nhập, xác thực tự động login |
+| Cơ sở dữ liệu | SQL Server | Lưu thông tin người dùng (`Users` table) |
+
+---
 
 ## 🛠️ Cơ sở dữ liệu
 
